@@ -25,7 +25,7 @@ export function Experience() {
   ];
 
   return (
-    <section className="py-24 relative bg-muted/30" id="experience">
+    <section className="py-24 relative bg-card/30" id="experience">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,13 +35,15 @@ export function Experience() {
           className="max-w-4xl mx-auto"
         >
           <div className="flex items-center justify-end gap-4 mb-16">
-            <div className="h-[1px] flex-grow bg-gradient-to-l from-border to-transparent"></div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              My <span className="text-primary">Experience</span>
+            <div className="h-[2px] flex-grow bg-border relative">
+               <div className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase text-foreground">
+              Work <span className="text-primary text-glow">Logs</span>
             </h2>
           </div>
 
-          <div className="relative border-l border-primary/30 ml-3 md:ml-6 space-y-12">
+          <div className="relative border-l border-primary/50 ml-3 md:ml-6 space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
@@ -52,36 +54,34 @@ export function Experience() {
                 className="relative pl-8 md:pl-12"
               >
                 {/* Timeline dot */}
-                <div className="absolute w-6 h-6 bg-background border-2 border-primary rounded-full -left-[13px] top-1 flex items-center justify-center shadow-[0_0_10px_hsl(var(--primary)_/_0.5)]">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <div className="absolute w-6 h-6 bg-background border-2 border-primary -left-[13px] top-1 flex items-center justify-center glow-red" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}>
+                  <div className="w-2 h-2 bg-primary" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}></div>
                 </div>
 
-                <div className="bg-card border border-border p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow group relative overflow-hidden">
-                  <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary to-secondary opacity-0 group-hover:opacity-100 transition-opacity" />
-                  
+                <div className="bg-card border-l-4 border-l-primary border-y border-r border-border p-6 shadow-sm hover:glow-red transition-all group relative overflow-hidden">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="text-xl font-bold text-foreground uppercase tracking-wide">
                         {exp.title}
                       </h3>
-                      <div className="flex items-center gap-2 text-primary font-medium mt-1">
+                      <div className="flex items-center gap-2 text-primary font-mono font-medium mt-1">
                         <BriefcaseBusiness className="w-4 h-4" />
                         {exp.company}
                       </div>
                     </div>
-                    <div className="flex flex-col md:items-end text-sm text-muted-foreground font-mono">
+                    <div className="flex flex-col md:items-end text-sm text-primary font-mono bg-primary/10 px-3 py-1 border border-primary/20">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         {exp.date}
                       </div>
-                      <span>{exp.location}</span>
+                      <span className="text-muted-foreground">{exp.location}</span>
                     </div>
                   </div>
 
-                  <ul className="space-y-2 mt-4">
+                  <ul className="space-y-2 mt-4 font-mono text-sm">
                     {exp.description.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-muted-foreground">
-                        <span className="text-primary mt-1.5 text-xs">▹</span>
+                        <span className="text-primary mt-1.5 text-xs">{">"}</span>
                         <span className="leading-relaxed">{item}</span>
                       </li>
                     ))}

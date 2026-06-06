@@ -1,0 +1,89 @@
+# Implementation Plan: Premium Red & Black Interactive Developer Portfolio
+
+This plan details the redesign and enhancement of the developer portfolio resume for Krishna Yadav. The goal is to transform it into a premium, interactive, and legitimate-feeling portfolio with a high-end red-and-black cyber aesthetic.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Key Visual & Interactive Elements:**
+> 1. **Obsidian & Crimson Color Palette:** We will replace the default theme colors with obsidian black, charcoal gray, and neon crimson red highlights/glows.
+> 2. **Interactive Terminal Simulator:** We will add a fully interactive developer shell on the Hero section where visitors can type commands (`help`, `about`, `skills`, `projects`, `contact`, `clear`, `matrix`, `hack`) to query details or activate secret animations.
+> 3. **Interactive Project Showcase:** We will add a new dedicated section for "Featured Projects" showcasing Python/C++/Frontend work with interactive tab filters and detail cards.
+> 4. **Matrix Digital Rain / Cyber Grid Canvas:** We will add a togglable retro-futuristic digital matrix rain/grid background behind the terminal to make it look highly sophisticated.
+
+## Open Questions
+
+- *Are there specific personal projects you want featured in the new Projects section?* (I will pre-populate it with 3-4 realistic developer projects based on your skills: Python web scraper/API, Streamlit data tool, React front-end app, and a C++ CLI utility. You can edit these later).
+- *Would you like a custom particle/glow cursor effect on desktop?* (Recommended for that high-end cyber feel).
+
+---
+
+## Proposed Changes
+
+We will construct a new React/Vite/TypeScript project inside the local path `C:\Users\ky582\.gemini\antigravity\scratch\portfolio-crimson`. We will copy the existing portfolio copy but overhaul the styles and add high-interactivity components.
+
+### 1. Foundation & Design System
+
+#### [NEW] [index.css](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/index.css)
+- Implement custom Tailwind CSS variables for obsidian dark-mode (`background` as deep dark black `#030303`, `card` as dark charcoal `#0b0b0b`).
+- Define crimson/red highlights (`primary` as vibrant neon red `#ff003c` or `#e50914`, `accent` as glowing red `#ff3355`).
+- Implement glow effects, scanline animations, terminal blinkers, and grid overlay patterns.
+
+### 2. Core Application Layout & Components
+
+#### [NEW] [Navbar.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/layout/Navbar.tsx)
+- Redesign using carbon-matte colors, neon red border shadows, and custom hover animations.
+- Keep the dark/light toggle (with neon adjustments).
+
+#### [NEW] [TerminalConsole.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/interactive/TerminalConsole.tsx)
+- Create a fully interactive React-based terminal console.
+- Support list of commands:
+  - `help`: lists available commands.
+  - `about`: displays background/NCC cadet info.
+  - `skills`: prints languages & levels in ascii-bar format.
+  - `projects`: lists featured projects with short descriptions.
+  - `contact`: shows links and contact details.
+  - `matrix`: toggles custom matrix rain animation.
+  - `clear`: wipes terminal history.
+  - `hack`: executes a mock "legit hack" sequence typing out cool logs.
+
+#### [NEW] [MatrixRain.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/interactive/MatrixRain.tsx)
+- A canvas-based performance-optimized digital matrix rain background using red and dark gray characters instead of green, creating a gorgeous cyberpunk theme.
+
+### 3. Redesigned Content Sections
+
+#### [NEW] [Hero.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/sections/Hero.tsx)
+- Redesign layout: Grid with Name and Typewriter introduction on the left, and the **Interactive Terminal simulator** on the right.
+- Add subtle floating red particle effects.
+
+#### [NEW] [Projects.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/sections/Projects.tsx)
+- A brand new interactive section displaying personal projects.
+- Features categorizations (Python, Frontend, C++) with crimson red tags, hover-glowing outlines, and links.
+
+#### [NEW] [About.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/sections/About.tsx)
+- Reorganize text and stats into sleek cards with crimson highlights.
+- Highlight the **NCC Cadet** certification using a bold cadet-crimson badge/card.
+
+#### [NEW] [Experience.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/sections/Experience.tsx)
+- Cyberpunk vertical timeline. Line and timeline dots glow red.
+- Hovering over a card shows glowing red borders.
+
+#### [NEW] [Skills.tsx](file:///C:/Users/ky582/.gemini/antigravity/scratch/portfolio-crimson/src/components/sections/Skills.tsx)
+- Overhaul skill progress bars: Sleek crimson gradients with glowing right edges.
+- Custom tech icons in glowing circles.
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- Run `npm run build` or `vite build` locally to verify successful compilation.
+- Typecheck files using `npm run typecheck` or `tsc`.
+
+### Manual Verification
+- Launch local development server (`npm run dev`) and test:
+  1. Responsive layout on mobile, tablet, and desktop screens.
+  2. Interaction inside the terminal simulation: enter each command and check formatting.
+  3. Interactive tab filters in the Projects showcase.
+  4. Matrix rain toggle behavior.
+  5. Dark/light theme colors compatibility.

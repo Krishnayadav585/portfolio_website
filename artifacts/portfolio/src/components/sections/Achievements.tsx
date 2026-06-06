@@ -16,7 +16,7 @@ export function Achievements() {
   ];
 
   return (
-    <section className="py-24 relative" id="achievements">
+    <section className="py-24 relative bg-background" id="achievements">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -26,10 +26,12 @@ export function Achievements() {
           className="max-w-4xl mx-auto"
         >
           <div className="flex items-center gap-4 mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-              Achievements & <span className="text-primary">Certifications</span>
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight uppercase text-foreground">
+              Verified <span className="text-primary text-glow">Credentials</span>
             </h2>
-            <div className="h-[1px] flex-grow bg-gradient-to-r from-border to-transparent"></div>
+            <div className="h-[2px] flex-grow bg-border relative">
+               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-primary" style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }} />
+            </div>
           </div>
 
           <div className="grid sm:grid-cols-2 gap-6">
@@ -40,13 +42,13 @@ export function Achievements() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.2 }}
-                className="bg-card border border-border p-6 rounded-2xl hover:border-primary/50 transition-all hover:-translate-y-1 shadow-sm group"
+                className="bg-card border border-border p-6 hover:border-primary transition-all hover:-translate-y-1 group hover:glow-red"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground border border-primary/20 transition-colors">
                   <item.icon className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground font-mono text-sm">{item.issuer}</p>
+                <h3 className="text-xl font-bold mb-2 text-foreground uppercase">{item.title}</h3>
+                <p className="text-primary font-mono text-sm before:content-['//_']">{item.issuer}</p>
               </motion.div>
             ))}
           </div>

@@ -1,12 +1,10 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
-import { useTheme } from "@/lib/theme-provider";
-import { Moon, Sun, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme, setTheme } = useTheme();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -25,6 +23,7 @@ export function Navbar() {
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Experience", href: "#experience" },
+    { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
     { name: "Contact", href: "#contact" },
   ];
@@ -32,21 +31,20 @@ export function Navbar() {
   return (
     <>
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-secondary to-accent origin-left z-50"
+        className="fixed top-0 left-0 right-0 h-[2px] bg-primary origin-left z-50 glow-red"
         style={{ scaleX }}
       />
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled 
-            ? "bg-background/80 backdrop-blur-md border-b border-border py-3 shadow-sm" 
+            ? "bg-background/90 backdrop-blur-md border-b border-primary/20 shadow-[0_4px_30px_rgba(255,0,48,0.1)] py-3" 
             : "bg-transparent py-5"
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2 group">
-            <Terminal className="w-6 h-6 text-primary group-hover:text-secondary transition-colors" />
-            <span className="font-mono font-bold text-lg tracking-tight hidden sm:block">
-              krishna<span className="text-primary">.dev</span>
+          <a href="#" className="flex items-center gap-2 group" data-testid="nav-logo">
+            <span className="font-mono font-bold text-lg tracking-tight text-foreground">
+              [<span className="text-primary group-hover:text-glow transition-all">KY</span>]
             </span>
           </a>
 
@@ -55,29 +53,21 @@ export function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground hover:text-primary transition-colors relative group"
+                className="text-sm font-medium font-mono text-muted-foreground hover:text-primary transition-colors relative group"
+                data-testid={`nav-link-${link.name.toLowerCase()}`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full group-hover:shadow-[0_0_10px_rgba(255,0,48,0.8)]"></span>
               </a>
             ))}
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              className="rounded-full"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              title="Toggle Theme"
+            <Button 
+              className="hidden sm:flex font-mono text-xs border border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground hover:glow-red transition-all rounded-sm" 
+              asChild
+              data-testid="nav-hire-me"
             >
-              {theme === "dark" ? (
-                <Sun className="h-5 w-5 text-yellow-400" />
-              ) : (
-                <Moon className="h-5 w-5 text-indigo-600" />
-              )}
-            </Button>
-            <Button className="hidden sm:flex font-mono text-xs shadow-[0_0_15px_-3px_hsl(var(--primary)_/_0.4)] hover:shadow-[0_0_20px_-3px_hsl(var(--primary)_/_0.6)] transition-all" asChild>
               <a href="#contact">{"<HireMe />"}</a>
             </Button>
           </div>

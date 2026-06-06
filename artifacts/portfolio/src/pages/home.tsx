@@ -9,6 +9,7 @@ import { Achievements } from "@/components/sections/Achievements";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
 import { MatrixRain } from "@/components/interactive/MatrixRain";
+import { CursorGlow } from "@/components/interactive/CursorGlow";
 import { useState } from "react";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30 selection:text-primary relative z-0">
+      <CursorGlow />
       <MatrixRain isActive={matrixActive} />
       <Navbar />
       

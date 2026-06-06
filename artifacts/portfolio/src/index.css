@@ -114,6 +114,30 @@
   opacity: 0.15;
 }
 
+/* Custom cursor */
+body { cursor: none; }
+a, button, input, [data-testid] { cursor: none; }
+
+.cursor-dot {
+  transition: width 0.15s, height 0.15s, background-color 0.15s;
+}
+.cursor-dot.cursor-dot-active {
+  width: 6px;
+  height: 6px;
+  background-color: hsl(var(--primary));
+  box-shadow: 0 0 8px rgba(255,0,48,0.9);
+}
+
+.cursor-ring {
+  transition: width 0.2s, height 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.cursor-ring.cursor-ring-active {
+  width: 48px;
+  height: 48px;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 20px rgba(255,0,48,0.4), inset 0 0 20px rgba(255,0,48,0.08);
+}
+
 .typewriter-cycle {
   display: inline-block;
   overflow: hidden;

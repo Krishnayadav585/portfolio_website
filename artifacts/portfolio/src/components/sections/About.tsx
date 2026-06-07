@@ -21,42 +21,68 @@ export function About() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-12 items-start">
-            <div className="md:col-span-7 space-y-6 text-base text-muted-foreground leading-relaxed font-mono">
-              <p>
-                <span className="text-primary">{">"}</span> I am a Computer Science undergraduate in my third year with a strong interest in Frontend Development and Python Full Stack Development. I'm passionate about building clean, responsive user interfaces and continuously learning new technologies.
-              </p>
-              <p>
-                <span className="text-primary">{">"}</span> My technical journey is grounded in solid core concepts—Data Structures, Algorithms, Operating Systems, and DBMS—paired with practical skills in HTML, CSS, JavaScript, and Python. I love bridging the gap between elegant design and robust backend logic.
-              </p>
+          <div className="grid md:grid-cols-12 gap-12 items-center">
+            {/* Left: Cybernetic Profile Picture */}
+            <div className="md:col-span-5 relative group mx-auto md:mx-0 max-w-[280px] md:max-w-full w-full">
+              {/* Tech frame corners */}
+              <div className="absolute -top-2 -left-2 w-5 h-5 border-t-2 border-l-2 border-primary z-20" />
+              <div className="absolute -top-2 -right-2 w-5 h-5 border-t-2 border-r-2 border-primary z-20" />
+              <div className="absolute -bottom-2 -left-2 w-5 h-5 border-b-2 border-l-2 border-primary z-20" />
+              <div className="absolute -bottom-2 -right-2 w-5 h-5 border-b-2 border-r-2 border-primary z-20" />
+              
+              {/* Neon red glow shadow */}
+              <div className="absolute inset-0 bg-primary/5 blur-[10px] rounded-sm group-hover:bg-primary/15 transition-all duration-300" />
+              
+              {/* Image box */}
+              <div className="relative border border-primary bg-card p-2 rounded-sm overflow-hidden z-10 shadow-[inset_0_0_20px_rgba(255,0,48,0.1)]">
+                <img
+                  src="/profile.jpg"
+                  alt="Krishna Yadav"
+                  className="w-full h-auto object-cover grayscale contrast-[1.05] brightness-[0.95] group-hover:grayscale-0 transition-all duration-500 rounded-sm"
+                />
+                {/* Scanline overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent h-[20%] w-full animate-scan pointer-events-none" />
+              </div>
             </div>
-            
-            <div className="md:col-span-5 space-y-6">
-              <div className="grid grid-cols-2 gap-4">
-                 <div className="border border-primary bg-card p-4 flex flex-col items-center justify-center text-center shadow-[inset_0_0_20px_rgba(255,0,48,0.05)]">
-                    <span className="text-3xl font-black text-primary mb-1">7.5</span>
-                    <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">CGPA</span>
-                 </div>
-                 <div className="border border-primary bg-card p-4 flex flex-col items-center justify-center text-center shadow-[inset_0_0_20px_rgba(255,0,48,0.05)]">
-                    <span className="text-3xl font-black text-primary mb-1">2</span>
-                    <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">Certifications</span>
-                 </div>
-                 <div className="col-span-2 border border-primary bg-card p-4 flex flex-col items-center justify-center text-center shadow-[inset_0_0_20px_rgba(255,0,48,0.05)]">
-                    <span className="text-3xl font-black text-primary mb-1">3rd Year</span>
-                    <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">B.Tech CSE Student</span>
-                 </div>
+
+            {/* Right: Bio & Info */}
+            <div className="md:col-span-7 space-y-6">
+              <div className="space-y-4 text-base text-muted-foreground leading-relaxed font-mono">
+                <p>
+                  <span className="text-primary">{">"}</span> I am a Computer Science undergraduate in my third year with a strong interest in Frontend Development and Python Full Stack Development. I'm passionate about building clean, responsive user interfaces and continuously learning new technologies.
+                </p>
+                <p>
+                  <span className="text-primary">{">"}</span> My technical journey is grounded in solid core concepts—Data Structures, Algorithms, Operating Systems, and DBMS—paired with practical skills in HTML, CSS, JavaScript, and Python. I love bridging the gap between elegant design and robust backend logic.
+                </p>
               </div>
 
-              <div className="flex items-start gap-4 p-5 border-l-4 border-l-primary bg-card/50 relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[30px]" />
-                <div className="p-2 border border-primary/50 text-primary mt-1 bg-background z-10">
-                  <ShieldAlert className="w-6 h-6" />
+              <div className="grid md:grid-cols-2 gap-6 items-start mt-6">
+                <div className="grid grid-cols-2 gap-4">
+                   <div className="border border-primary bg-card p-4 flex flex-col items-center justify-center text-center shadow-[inset_0_0_20px_rgba(255,0,48,0.05)]">
+                      <span className="text-2xl md:text-3xl font-black text-primary mb-1">7.5</span>
+                      <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono">CGPA</span>
+                   </div>
+                   <div className="border border-primary bg-card p-4 flex flex-col items-center justify-center text-center shadow-[inset_0_0_20px_rgba(255,0,48,0.05)]">
+                      <span className="text-2xl md:text-3xl font-black text-primary mb-1">2</span>
+                      <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono">Certifications</span>
+                   </div>
+                   <div className="col-span-2 border border-primary bg-card p-4 flex flex-col items-center justify-center text-center shadow-[inset_0_0_20px_rgba(255,0,48,0.05)]">
+                      <span className="text-2xl md:text-3xl font-black text-primary mb-1">3rd Year</span>
+                      <span className="text-[10px] text-muted-foreground uppercase tracking-widest font-mono">B.Tech CSE Student</span>
+                   </div>
                 </div>
-                <div className="z-10">
-                  <h4 className="font-bold text-foreground mb-1 uppercase tracking-wider text-sm font-mono text-glow">NCC Cadet Status</h4>
-                  <p className="text-xs text-muted-foreground font-mono leading-relaxed">
-                    Disciplined cadet with proven leadership, teamwork, and organizational skills. Trained in drill, discipline, and responsibility. Strong commitment to integrity and service.
-                  </p>
+
+                <div className="flex items-start gap-4 p-5 border-l-4 border-l-primary bg-card/50 relative overflow-hidden group h-full">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[30px]" />
+                  <div className="p-2 border border-primary/50 text-primary mt-1 bg-background z-10">
+                    <ShieldAlert className="w-5 h-5" />
+                  </div>
+                  <div className="z-10">
+                    <h4 className="font-bold text-foreground mb-1 uppercase tracking-wider text-xs font-mono text-glow">NCC Cadet Status</h4>
+                    <p className="text-[10px] leading-normal text-muted-foreground font-mono">
+                      Disciplined cadet with proven leadership, teamwork, and organizational skills. Trained in drill, discipline, and responsibility. Strong commitment to integrity and service.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -44,9 +44,9 @@ export function Hero({ onMatrixToggle }: { onMatrixToggle: () => void }) {
         />
       ))}
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 grid lg:grid-cols-2 gap-10 items-center">
+      <div className="container mx-auto px-6 md:px-12 relative z-10 grid grid-cols-1 xl:grid-cols-2 gap-10 items-center">
         {/* Left: Text Content */}
-        <div className="flex flex-col items-start text-left">
+        <div className="flex flex-col items-start text-left max-w-2xl mx-auto xl:mx-0 w-full">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -178,7 +178,7 @@ export function Hero({ onMatrixToggle }: { onMatrixToggle: () => void }) {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="hidden lg:flex justify-center relative w-full"
+          className="hidden xl:flex justify-center relative w-full"
         >
           <TerminalConsole onMatrixToggle={onMatrixToggle} />
         </motion.div>

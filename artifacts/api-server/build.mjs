@@ -95,10 +95,6 @@ const sharedConfig = {
     "electron",
   ],
   sourcemap: "linked",
-  plugins: [
-    // pino relies on workers to handle logging, instead of externalizing it we use a plugin to handle it
-    esbuildPluginPino({ transports: ["pino-pretty"] })
-  ],
   // Make sure packages that are cjs only (e.g. express) but are bundled continue to work in our esm output file
   banner: {
     js: `import { createRequire as __bannerCrReq } from 'node:module';
@@ -119,15 +115,18 @@ async function buildAll() {
   const apiDir = path.resolve(artifactDir, "api");
   await rm(apiDir, { recursive: true, force: true });
 
-  // 1. Local development runner
+  // 1. Local development runner (with pino worker support for pino-pretty)
   await esbuild({
     ...sharedConfig,
     entryPoints: [path.resolve(artifactDir, "src/index.ts")],
     outdir: distDir,
     outExtension: { ".js": ".mjs" },
+    plugins: [
+      esbuildPluginPino({ transports: ["pino-pretty"] })
+    ],
   });
 
-  // 2. Vercel Serverless Function entry point
+  // 2. Vercel Serverless Function entry point (pure direct stdout/stderr logging, no workers)
   await esbuild({
     ...sharedConfig,
     entryPoints: [path.resolve(artifactDir, "src/app.ts")],

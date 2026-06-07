@@ -27981,17 +27981,7 @@ var require_multistream = __commonJS({
 // ../../node_modules/.pnpm/pino@9.14.0/node_modules/pino/pino.js
 var require_pino = __commonJS({
   "../../node_modules/.pnpm/pino@9.14.0/node_modules/pino/pino.js"(exports, module) {
-    function pinoBundlerAbsolutePath(p) {
-      try {
-        const path = __require("path");
-        const outputDir = "C:\\Users\\ky582\\OneDrive\\Desktop\\Resume-Showcase\\artifacts\\api-server\\api";
-        return path.resolve(outputDir, p.replace(/^\.\//, ""));
-      } catch (e) {
-        const f = new Function("p", "return new URL(p, import.meta.url).pathname");
-        return f(p);
-      }
-    }
-    globalThis.__bundlerPathsOverrides = { ...globalThis.__bundlerPathsOverrides || {}, "thread-stream-worker": pinoBundlerAbsolutePath("./thread-stream-worker.js"), "pino-worker": pinoBundlerAbsolutePath("./pino-worker.js"), "pino/file": pinoBundlerAbsolutePath("./pino-file.js"), "pino-pretty": pinoBundlerAbsolutePath("./pino-pretty.js") };
+    "use strict";
     var os = __require("node:os");
     var stdSerializers = require_pino_std_serializers();
     var caller = require_caller();
@@ -32353,19 +32343,24 @@ var routes_default = router2;
 
 // src/lib/logger.ts
 var import_pino = __toESM(require_pino(), 1);
-var isProduction = process.env.NODE_ENV === "production";
-var logger = (0, import_pino.default)({
+var isProduction = process.env.NODE_ENV === "production" || !!process.env.VERCEL;
+var logger = isProduction ? (0, import_pino.default)({
+  level: process.env.LOG_LEVEL ?? "info",
+  redact: [
+    "req.headers.authorization",
+    "req.headers.cookie",
+    "res.headers['set-cookie']"
+  ]
+}) : (0, import_pino.default)({
   level: process.env.LOG_LEVEL ?? "info",
   redact: [
     "req.headers.authorization",
     "req.headers.cookie",
     "res.headers['set-cookie']"
   ],
-  ...isProduction ? {} : {
-    transport: {
-      target: "pino-pretty",
-      options: { colorize: true }
-    }
+  transport: {
+    target: "pino-pretty",
+    options: { colorize: true }
   }
 });
 

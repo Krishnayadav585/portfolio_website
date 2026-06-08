@@ -36,7 +36,7 @@ export function About() {
               {/* Image box */}
               <div className="relative border border-primary bg-card p-2 rounded-sm overflow-hidden z-10 shadow-[inset_0_0_20px_rgba(255,0,48,0.1)]">
                 <img
-                  src="/profile.jpg"
+                  src={`${import.meta.env.BASE_URL}profile.jpg`}
                   alt="Krishna Yadav"
                   className="w-full h-auto object-cover grayscale contrast-[1.05] brightness-[0.95] group-hover:grayscale-0 transition-all duration-500 rounded-sm"
                 />

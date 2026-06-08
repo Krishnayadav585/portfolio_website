@@ -64,7 +64,7 @@ export function Resume() {
                   className="bg-primary text-primary-foreground hover:bg-primary/80 glow-red font-mono font-bold rounded-sm text-xs py-2 px-5 flex items-center gap-2"
                   asChild
                 >
-                  <a href="/resume.pdf" download="Krishna_Yadav_Resume.pdf">
+                  <a href={`${import.meta.env.BASE_URL}resume.pdf`} download="Krishna_Yadav_Resume.pdf">
                     <Download className="w-4 h-4" /> [Download_CV]
                   </a>
                 </Button>
@@ -73,7 +73,7 @@ export function Resume() {
                   className="border-border text-foreground hover:border-primary hover:text-primary font-mono rounded-sm text-xs py-2 px-5 flex items-center gap-2"
                   asChild
                 >
-                  <a href="/resume.pdf" target="_blank" rel="noreferrer">
+                  <a href={`${import.meta.env.BASE_URL}resume.pdf`} target="_blank" rel="noreferrer">
                     <ExternalLink className="w-4 h-4" /> [Open_PDF]
                   </a>
                 </Button>

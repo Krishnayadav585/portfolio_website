@@ -64,7 +64,7 @@ function SidebarContent({
 
           <div className="relative border border-primary bg-card p-1 rounded-sm overflow-hidden z-10 w-full h-full shadow-[inset_0_0_15px_rgba(255,0,48,0.15)]">
             <img
-              src="/profile.jpg"
+              src={`${import.meta.env.BASE_URL}profile.jpg`}
               alt="Krishna Yadav"
               className="w-full h-full object-cover grayscale contrast-[1.05] brightness-[0.95] group-hover:grayscale-0 transition-all duration-500 rounded-sm"
             />
@@ -144,7 +144,7 @@ function SidebarContent({
 
         {/* Action button */}
         <a
-          href="/resume.pdf"
+          href={`${import.meta.env.BASE_URL}resume.pdf`}
           download="Krishna_Yadav_Resume.pdf"
           className="flex items-center justify-center gap-2 py-2 px-3 border border-primary/40 bg-primary/5 hover:bg-primary hover:text-primary-foreground hover:glow-red text-primary font-mono text-[10px] font-bold uppercase tracking-wider rounded-sm transition-all cursor-none"
         >
